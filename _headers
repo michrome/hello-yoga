@@ -1,2 +1,4 @@
+http://hello-yoga.co.uk/, http://www.hello-yoga.co.uk/, https://hello-yoga.co.uk/
+  cache-control: public, max-age=2592000
 /
   Link: </yoga-people.svg>; rel=preload; as=image
