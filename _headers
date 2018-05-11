@@ -1,7 +1,7 @@
-http://hello-yoga.co.uk/*
+hello-yoga.co.uk/*
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
 
-http://hello-yoga.co.uk/
+hello-yoga.co.uk/
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
 
 /
