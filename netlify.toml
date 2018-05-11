@@ -1,0 +1,17 @@
+[[redirects]]
+  from = "http://hello-yoga.co.uk/*"
+  to = "https://www.hello-yoga.co.uk/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.hello-yoga.co.uk/*"
+  to = "https://www.hello-yoga.co.uk/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://hello-yoga.co.uk/*"
+  to = "https://www.hello-yoga.co.uk/:splat"
+  status = 301
+  force = true
