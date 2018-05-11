@@ -1,5 +1,0 @@
-http://hello-yoga.co.uk/*
-  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
-
-/
-  Link: </yoga-people.svg>; rel=preload; as=image
