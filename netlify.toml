@@ -1,22 +1,30 @@
-[[headers]]
-  for = "/"
-  [headers.values]
-  Link = "</yoga-people.svg>; rel=preload; as=image"
-
 [[redirects]]
   from = "http://hello-yoga.co.uk/*"
   to = "https://www.hello-yoga.co.uk/:splat"
   status = 301
   force = true
+  [redirects.headers]
+    Cache-Control = "public, max-age=2592000"
+
 
 [[redirects]]
   from = "http://www.hello-yoga.co.uk/*"
   to = "https://www.hello-yoga.co.uk/:splat"
   status = 301
   force = true
+  [redirects.headers]
+    Cache-Control = "public, max-age=2592000"
+
 
 [[redirects]]
   from = "https://hello-yoga.co.uk/*"
   to = "https://www.hello-yoga.co.uk/:splat"
   status = 301
   force = true
+  [redirects.headers]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/"
+  [headers.values]
+  Link = "</yoga-people.svg>; rel=preload; as=image"
