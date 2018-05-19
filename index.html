@@ -25,6 +25,71 @@
             display: inline-block;
         }
     </style>
+    <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "Event",
+          "name": "hello YOGA",
+          "startDate": "2018-06-13T19:45",
+          "endDate": "2018-06-13T20:45",
+          "description":
+            "Yoga class at Friends Meeting House (Harrogate) every Wednesday.",
+          "image": "https://www.hello-yoga.co.uk/yoga-people.svg",
+          "location": {
+            "@type": "Place",
+            "name": "Friends Meeting House",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "12A Queens Parade",
+              "addressLocality": "Harrogate",
+              "addressRegion": "North Yorkshire",
+              "postalCode": "HG1 5PP",
+              "addressCountry": "GB"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "availability": "http://schema.org/LimitedAvailability",
+            "price": "7.00",
+            "priceCurrency": "GBP",
+            "validFrom": "2018-05-01T12:00",
+            "url": "https://www.hello-yoga.co.uk"
+          },
+          "potentialAction": {
+            "@type": "ExerciseAction",
+            "name": "hello YOGA",
+            "description": "Small, friendly yoga class. Suitable for all abilities.",
+            "exerciseType": "Yoga",
+            "startTime": "2018-06-13T19:45",
+            "endTime": "2018-06-13T20:45",
+            "location": {
+              "name": "Friends Meeting House",
+              "@type": "PostalAddress",
+              "streetAddress": "12A Queens Parade",
+              "addressLocality": "Harrogate",
+              "addressRegion": "North Yorkshire",
+              "postalCode": "HG1 5PP",
+              "addressCountry": "GB"
+            }
+          },
+          "performer": {
+            "@type": "LocalBusiness",
+            "description":
+              "Small, friendly yoga classes. Suitable for all abilities. Strengthen body, increase flexibility and calm the mind.",
+            "name": "hello YOGA",
+            "email": "clare@hello-yoga.co.uk",
+            "url": "https://www.hello-yoga.co.uk",
+            "priceRange": "£7",
+            "image": "https://www.hello-yoga.co.uk/yoga-people.svg",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Harrogate",
+              "addressRegion": "North Yorkshire",
+              "addressCountry": "GB"
+            }
+          }
+        }
+    </script>
 </head>
 
 <body>
@@ -58,64 +123,6 @@
     <p>
         <img src="yoga-people.svg" alt="">
     </p>
-    <script type="application/ld+json">
-        {
-          "@context": "http://schema.org/",
-          "@type": "ExerciseAction",
-          "name": "hello YOGA",
-          "description": "Strengthen body, increase flexibility and calm the mind. Small, friendly classes. Suitable for all abilities.",
-          "exerciseType": "Yoga",
-          "startTime": "2018-06-13T19:45",
-          "endTime": "2018-06-13T20:45",
-          "location": {
-            "@type": "PostalAddress",
-            "streetAddress": "12A Queens Parade",
-            "addressLocality": "Harrogate",
-            "addressRegion": "North Yorkshire",
-            "postalCode": "HG1 5PP",
-            "addressCountry": "GB"
-          }
-        }
-    </script>
-    <script type="application/ld+json">
-        {
-            "@context": "http://schema.org/",
-            "@type": "ExerciseAction",
-            "name": "hello YOGA",
-            "description": "Strengthen body, increase flexibility and calm the mind. Small, friendly classes. Suitable for all abilities.",
-            "exerciseType": "Yoga",
-            "startTime": "2018-06-07T19:00",
-            "endTime": "2018-06-07T20:00",
-            "location": {
-              "@type": "PostalAddress",
-              "streetAddress": "Beckwith Health Club",
-              "addressLocality": "Harrogate",
-              "addressRegion": "North Yorkshire",
-              "postalCode": "HG3 1UF",
-              "addressCountry": "GB"
-            }
-          }
-    </script>
-    <script type="application/ld+json">
-        {
-          "@context": "http://schema.org",
-          "@type": "LocalBusiness",
-          "description": "Strengthen body, increase flexibility and calm the mind. Small, friendly classes. Suitable for all abilities.",
-          "name": "hello YOGA",
-          "email":"clare@hello-yoga.co.uk",
-          "url": "https://www.hello-yoga.co.uk",
-          "image": "https://www.hello-yoga.co.uk/yoga-people.svg",
-          "priceRange": "£7",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "12A Queens Parade",
-            "addressLocality": "Harrogate",
-            "addressRegion": "North Yorkshire",
-            "postalCode": "HG1 5PP",
-            "addressCountry": "GB"
-          }
-        }
-    </script>
 </body>
 
 </html>
