@@ -27,4 +27,6 @@
 [[headers]]
   for = "/"
   [headers.values]
-  Link = "</yoga-people.png>; rel=preload; as=image"
+  Link = '''
+  </yoga-people.png>; rel=preload; as=image, \
+  </hello-yoga.png>; rel=preload; as=image''' # Headers for H2 Server Push
