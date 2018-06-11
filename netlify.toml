@@ -27,4 +27,4 @@
 [[headers]]
   for = "/"
   [headers.values]
-  Link = "</yoga-people.svg>; rel=preload; as=image"
+  Link = "</yoga-people.png>; rel=preload; as=image"
