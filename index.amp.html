@@ -22,9 +22,11 @@
       text-align: center;
     }
 
-    img {
+    .img-container {
       max-width: 90%;
       max-height: 50vh;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     span.line {
@@ -161,7 +163,7 @@
 </head>
 
 <body>
-  <p>
+  <p class="img-container">
     <amp-img src="hello-yoga.png" alt="hello YOGA" height="165" width="230"></amp-img>
   </p>
   <h2>Wednesdays 19:45–20:45</h2>
@@ -193,8 +195,8 @@
       <a href="https://facebook.com/helloyogaharrogate">hello YOGA Facebook page</a>.
     </span>
   </p>
-  <p>
-    <amp-img src="yoga-people.png" alt="" height="247" width="433"></amp-img>
+  <p class="img-container">
+    <amp-img src="yoga-people.png" alt="" layout="responsive" height="247" width="433"></amp-img>
   </p>
   <amp-analytics type="googleanalytics">
     <script type="application/json">
