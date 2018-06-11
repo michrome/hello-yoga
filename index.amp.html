@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+  <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
   <script async src="https://cdn.ampproject.org/v0.js"></script>
   <link rel="canonical" href="https://www.hello-yoga.co.uk">
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
@@ -190,6 +191,21 @@
       <a href="https://facebook.com/helloyogaharrogate">hello YOGA Facebook page</a>.
     </span>
   </p>
+  <amp-analytics type="googleanalytics">
+    <script type="application/json">
+    {
+      "vars": {
+        "account": "UA-89800146-2"
+      },
+      "triggers": {
+        "trackPageview": {
+          "on": "visible",
+          "request": "pageview"
+        }
+      }
+    }
+    </script>
+    </amp-analytics>
 </body>
 
 </html>
