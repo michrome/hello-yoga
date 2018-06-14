@@ -1,21 +1,17 @@
 <!doctype html>
-<html lang="en-GB">
+<html ⚡ lang="en-GB">
 
 <head>
   <meta charset="utf-8">
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-89800146-2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-89800146-2');
-  </script>
-  <meta name="viewport" content="width=device-width">
+  <title>hello YOGA</title>
+  <link rel="canonical" href="https://www.hello-yoga.co.uk">
+  <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
   <meta property="og:title" content="hello YOGA" />
   <meta property="og:image" content="https://www.hello-yoga.co.uk/hello-yoga.png">
-  <title>hello YOGA</title>
-  <style>
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+  <style amp-custom>
     html {
       -webkit-text-size-adjust: 100%;
     }
@@ -26,13 +22,12 @@
       text-align: center;
     }
 
-    img {
-      max-width: 90%;
-      max-height: 50vh;
-    }
-
     span.line {
       display: inline-block;
+    }
+
+    #yoga-people {
+      max-width: 90%;
     }
   </style>
   <script type="application/ld+json">
@@ -170,12 +165,11 @@
     }
   ]  
   </script>
-  <link rel="amphtml" href="index.amp.html">
 </head>
 
 <body>
-  <p>
-    <img src="hello-yoga.png" alt="hello YOGA">
+  <p class="img-container">
+    <amp-img src="hello-yoga.png" alt="hello YOGA" height="165" width="230"></amp-img>
   </p>
   <h2>Wednesdays 19:45–20:45</h2>
   <p id="friends-meeting-house">
@@ -207,8 +201,23 @@
     </span>
   </p>
   <p>
-    <img src="yoga-people.png" alt="">
+    <amp-img src="yoga-people.png" layout="intrinsic" alt="" id="yoga-people" height="247" width="433"></amp-img>
   </p>
+  <amp-analytics type="googleanalytics">
+    <script type="application/json">
+    {
+      "vars": {
+        "account": "UA-89800146-2"
+      },
+      "triggers": {
+        "trackPageview": {
+          "on": "visible",
+          "request": "pageview"
+        }
+      }
+    }
+    </script>
+  </amp-analytics>
 </body>
 
 </html>
