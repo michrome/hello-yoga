@@ -10,7 +10,69 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
   <meta property="og:title" content="hello YOGA" />
   <meta property="og:image" content="https://www.hello-yoga.co.uk/hello-yoga.png">
-  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+  <style amp-boilerplate>
+    body {
+      -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      animation: -amp-start 8s steps(1, end) 0s 1 normal both
+    }
+
+    @-webkit-keyframes -amp-start {
+      from {
+        visibility: hidden
+      }
+      to {
+        visibility: visible
+      }
+    }
+
+    @-moz-keyframes -amp-start {
+      from {
+        visibility: hidden
+      }
+      to {
+        visibility: visible
+      }
+    }
+
+    @-ms-keyframes -amp-start {
+      from {
+        visibility: hidden
+      }
+      to {
+        visibility: visible
+      }
+    }
+
+    @-o-keyframes -amp-start {
+      from {
+        visibility: hidden
+      }
+      to {
+        visibility: visible
+      }
+    }
+
+    @keyframes -amp-start {
+      from {
+        visibility: hidden
+      }
+      to {
+        visibility: visible
+      }
+    }
+  </style>
+  <noscript>
+    <style amp-boilerplate>
+      body {
+        -webkit-animation: none;
+        -moz-animation: none;
+        -ms-animation: none;
+        animation: none
+      }
+    </style>
+  </noscript>
   <style amp-custom>
     html {
       -webkit-text-size-adjust: 100%;
@@ -31,139 +93,153 @@
     }
   </style>
   <script type="application/ld+json">
-  [
+    [
     {
-      "@id": "https://www.hello-yoga.co.uk/",
-      "@context": "http://schema.org",
-      "@type": "LocalBusiness",
-      "name": "hello YOGA",
-      "description":
-        "Small, friendly yoga classes. Suitable for all abilities. Strengthen body, increase flexibility and calm the mind.",
-      "email": "clare@hello-yoga.co.uk",
-      "url": "https://www.hello-yoga.co.uk/",
-      "image": "https://www.hello-yoga.co.uk/yoga-people.png",
-      "logo": "https://www.hello-yoga.co.uk/hello-yoga.png",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Harrogate",
-        "addressRegion": "North Yorkshire",
-        "addressCountry": "GB"
-      },
-      "telephone": "07581 334542",
-      "currenciesAccepted": "GBP",
-      "priceRange": "£",
-      "paymentAccepted": "Cash",
-      "openingHours": ["We 19:45-20:45", "Th 19:00-20:00"],
-      "sameAs": "https://facebook.com/helloyogaharrogate",
-      "contactPoint": [
-        { "@type": "ContactPoint",
-          "telephone": "+44-7581334542",
-          "contactType": "customer service"
+        "@id": "https://www.hello-yoga.co.uk/",
+        "@context": "http://schema.org",
+        "@type": "LocalBusiness",
+        "name": "hello YOGA",
+        "description": "Small, friendly yoga classes. Suitable for all abilities. Strengthen body, increase flexibility and calm the mind.",
+        "email": "clare@hello-yoga.co.uk",
+        "url": "https://www.hello-yoga.co.uk/",
+        "image": "https://www.hello-yoga.co.uk/yoga-people.png",
+        "logo": "https://www.hello-yoga.co.uk/hello-yoga.png",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Harrogate",
+            "addressRegion": "North Yorkshire",
+            "addressCountry": "GB"
+        },
+        "telephone": "07581 334542",
+        "currenciesAccepted": "GBP",
+        "priceRange": "£",
+        "paymentAccepted": "Cash",
+        "openingHours": [
+            "We 19:45-20:45",
+            "Th 19:00-20:00"
+        ],
+        "sameAs": "https://facebook.com/helloyogaharrogate",
+        "contactPoint": [
+            {
+                "@type": "ContactPoint",
+                "telephone": "+44-7581334542",
+                "contactType": "reservations",
+                "areaServed": "GB",
+                "availableLanguage": "English"
+            }
+        ]
+    },
+    {
+        "@context": "http://schema.org",
+        "@type": "Event",
+        "name": "hello YOGA",
+        "startDate": "2018-06-20T19:45",
+        "endDate": "2018-06-20T20:45",
+        "description": "Yoga class at Friends Meeting House (Harrogate) every Wednesday.",
+        "image": "https://www.hello-yoga.co.uk/yoga-people.png",
+        "location": {
+            "@id": "https://www.hello-yoga.co.uk/#friemds-meeting-house"
+        },
+        "offers": {
+            "@id": "https://www.hello-yoga.co.uk/#offer"
+        },
+        "potentialAction": {
+            "@id": "https://www.hello-yoga.co.uk/#yoga-action"
+        },
+        "performer": {
+            "@type": "LocalBusiness",
+            "name": "hello YOGA",
+            "priceRange": "£",
+            "image": "https://www.hello-yoga.co.uk/yoga-people.png",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Harrogate",
+                "addressRegion": "North Yorkshire",
+                "addressCountry": "GB"
+            },
+            "telephone": "07581 334542"
         }
-      ]
     },
     {
-      "@id": "https://www.hello-yoga.co.uk/#yoga-action",
-      "@context": "http://schema.org",
-      "@type": "ExerciseAction",
-      "exerciseType": "Yoga",
-      "name": "hello YOGA",
-      "description": "Small, friendly yoga class. Suitable for all abilities.",
-      "agent": {
-        "@id": "https://www.hello-yoga.co.uk/"
-      }
+        "@context": "http://schema.org",
+        "@type": "Event",
+        "name": "hello YOGA",
+        "startDate": "2018-06-21T19:00",
+        "endDate": "2018-06-21T20:00",
+        "description": "Yoga class at Beckwith Health Club (Harrogate) every Thursday.",
+        "image": "https://www.hello-yoga.co.uk/yoga-people.png",
+        "location": {
+            "@id": "https://www.hello-yoga.co.uk/#beckwith-health-club"
+        },
+        "offers": {
+            "@id": "https://www.hello-yoga.co.uk/#offer"
+        },
+        "potentialAction": {
+            "@id": "https://www.hello-yoga.co.uk/#yoga-action"
+        },
+        "performer": {
+            "@type": "LocalBusiness",
+            "name": "hello YOGA",
+            "priceRange": "£",
+            "image": "https://www.hello-yoga.co.uk/yoga-people.png",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Harrogate",
+                "addressRegion": "North Yorkshire",
+                "addressCountry": "GB"
+            },
+            "telephone": "07581 334542"
+        }
     },
     {
-      "@id": "https://www.hello-yoga.co.uk/#friemds-meeting-house",
-      "@context": "http://schema.org",
-      "@type": "Place",
-      "name": "Friends Meeting House",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "12A Queen Parade",
-        "addressLocality": "Harrogate",
-        "addressRegion": "North Yorkshire",
-        "postalCode": "HG1 5PP",
-        "addressCountry": "GB"
-      },
-      "url": "https://www.yorkquakers.org.uk/harrogatequakerm.html"
+        "@id": "https://www.hello-yoga.co.uk/#friemds-meeting-house",
+        "@context": "http://schema.org",
+        "@type": "Place",
+        "name": "Friends Meeting House",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "12A Queen Parade",
+            "addressLocality": "Harrogate",
+            "addressRegion": "North Yorkshire",
+            "postalCode": "HG1 5PP",
+            "addressCountry": "GB"
+        },
+        "url": "https://www.yorkquakers.org.uk/harrogatequakerm.html"
     },
     {
-      "@id": "https://www.hello-yoga.co.uk/#beckwith-health-club",
-      "@context": "http://schema.org",
-      "@type": "Place",
-      "name": "Beckwith Health Club",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Beckwith Health Club",
-        "addressLocality": "Harrogate",
-        "addressRegion": "North Yorkshire",
-        "postalCode": "HG3 1UF",
-        "addressCountry": "GB"
-      },
-      "url": "https://beckwithhealthclub.co.uk/"
+        "@id": "https://www.hello-yoga.co.uk/#beckwith-health-club",
+        "@context": "http://schema.org",
+        "@type": "Place",
+        "name": "Beckwith Health Club",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Beckwith Health Club",
+            "addressLocality": "Harrogate",
+            "addressRegion": "North Yorkshire",
+            "postalCode": "HG3 1UF",
+            "addressCountry": "GB"
+        },
+        "url": "https://beckwithhealthclub.co.uk/"
     },
     {
-      "@id": "https://www.hello-yoga.co.uk/#offer",
-      "@context": "http://schema.org",
-      "@type": "Offer",
-      "availability": "http://schema.org/LimitedAvailability",
-      "price": "7.00",
-      "priceCurrency": "GBP",
-      "validFrom": "2018-05-01T12:00",
-      "url": "https://www.hello-yoga.co.uk"
+        "@id": "https://www.hello-yoga.co.uk/#offer",
+        "@context": "http://schema.org",
+        "@type": "Offer",
+        "availability": "http://schema.org/LimitedAvailability",
+        "price": "7.00",
+        "priceCurrency": "GBP",
+        "validFrom": "2018-05-01T12:00",
+        "url": "https://www.hello-yoga.co.uk"
     },
     {
-      "@context": "http://schema.org",
-      "@type": "Event",
-      "name": "hello YOGA",
-      "startDate": "2018-06-20T19:45",
-      "endDate": "2018-06-20T20:45",
-      "description":
-        "Yoga class at Friends Meeting House (Harrogate) every Thursday.",
-      "image": "https://www.hello-yoga.co.uk/yoga-people.png",
-      "location": {
-        "@id": "https://www.hello-yoga.co.uk/#friemds-meeting-house"
-      },
-      "offers": {
-        "@id": "https://www.hello-yoga.co.uk/#offer"
-      },
-      "potentialAction": {
-        "@id": "https://www.hello-yoga.co.uk/#yoga-action"
-      },
-      "organizer": {
-        "@id": "https://www.hello-yoga.co.uk/"
-      },
-      "performer": {
-        "@id": "https://www.hello-yoga.co.uk/"
-      }
-    },
-    {
-      "@context": "http://schema.org",
-      "@type": "Event",
-      "name": "hello YOGA",
-      "startDate": "2018-06-14T19:00",
-      "endDate": "2018-06-14T20:00",
-      "description":
-        "Yoga class at Beckwith Health Club (Harrogate) every Wednesday.",
-      "image": "https://www.hello-yoga.co.uk/yoga-people.png",
-      "location": {
-        "@id": "https://www.hello-yoga.co.uk/#beckwith-health-club"
-      },
-      "offers": {
-        "@id": "https://www.hello-yoga.co.uk/#offer"
-      },
-      "potentialAction": {
-        "@id": "https://www.hello-yoga.co.uk/#yoga-action"
-      },
-      "organizer": {
-        "@id": "https://www.hello-yoga.co.uk/"
-      },
-      "performer": {
-        "@id": "https://www.hello-yoga.co.uk/"
-      }
+        "@id": "https://www.hello-yoga.co.uk/#yoga-action",
+        "@context": "http://schema.org",
+        "@type": "ExerciseAction",
+        "exerciseType": "Yoga",
+        "name": "hello YOGA",
+        "description": "Small, friendly yoga class. Suitable for all abilities."
     }
-  ]  
+    ]
   </script>
 </head>
 
