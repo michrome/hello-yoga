@@ -7,6 +7,7 @@
     <link rel="canonical" href="https://www.hello-yoga.co.uk">
     <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
     <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <meta name="description" content="Small, friendly yoga classes. Suitable for all abilities. Strengthen your body, increase your flexibility and calm your mind.">
     <meta property="og:title" content="hello YOGA" />
@@ -331,6 +332,17 @@
         <span class="line">Suitable for all abilities.</span>
     </p>
     <p id="offer">£7 per class.</p>
+    <form name="booking" method="POST" action-xhr="/booked" netlify>
+      <p>
+        <label>Your Name: <input type="text" name="name" /></label>   
+      </p>
+      <p>
+        <label>Your Email: <input type="email" name="email" /></label>
+      </p>
+      <p>
+        <button type="submit">Book</button>
+      </p>
+    </form>
     <p>To book your place,
         <span class="line">email
             <a href="mailto:clare@hello-yoga.co.uk">clare@hello-yoga.co.uk</a>
