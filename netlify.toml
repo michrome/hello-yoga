@@ -30,6 +30,8 @@
   Link = '''
   </yoga-people.png>; rel=preload; as=image, \
   </hello-yoga.png>; rel=preload; as=image''' # Headers for H2 Server Push
+  
+ [[headers]]
   for = "/booked"
   [headers.values]
   amp-access-control-allow-source-origin = "https://www.hello-yoga.co.uk"
