@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://www.hello-yoga.co.uk/sitemap.xml
