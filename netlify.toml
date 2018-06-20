@@ -32,5 +32,5 @@
   for = "/"
   [headers.values]
   Link = '''
-  </yoga-people.png>; rel=preload; as=image, \
-  </hello-yoga.png>; rel=preload; as=image''' # Headers for H2 Server Push
+  </images/yoga-people.png>; rel=preload; as=image, \
+  </images/hello-yoga.png>; rel=preload; as=image''' # Headers for H2 Server Push
