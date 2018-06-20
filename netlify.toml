@@ -1,3 +1,9 @@
+[build]
+  # This is the directory that you are publishing from (relative to root of your repo)
+  publish = "build/"
+  # This will be your default build command
+  command = "bundle exec middleman build"
+
 [[redirects]]
   from = "http://hello-yoga.co.uk/*"
   to = "https://www.hello-yoga.co.uk/:splat"
@@ -6,7 +12,6 @@
   [redirects.headers]
     Cache-Control = "public, max-age=2592000"
 
-
 [[redirects]]
   from = "http://www.hello-yoga.co.uk/*"
   to = "https://www.hello-yoga.co.uk/:splat"
@@ -14,7 +19,6 @@
   force = true
   [redirects.headers]
     Cache-Control = "public, max-age=2592000"
-
 
 [[redirects]]
   from = "https://hello-yoga.co.uk/*"
