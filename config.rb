@@ -12,7 +12,7 @@ end
 page "/*.xml", layout: false
 page "/*.json", layout: false
 page "/*.txt", layout: false
-page '/index.html', :layout => false
+page "/index.html", :layout => false
 
 # With alternative layout
 # page '/path/to/file.html', layout: 'other_layout'
@@ -45,3 +45,9 @@ page '/index.html', :layout => false
 #   activate :minify_css
 #   activate :minify_javascript
 # end
+
+activate :contentful do |f|
+  f.space = Hash[ENV["CONTENTFUL_SPACE"], ENV["CONTENTFUL_SPACE"]]
+  f.access_token = ENV["CONTENTFUL_ACCESS_TOKEN"]
+  f.content_types = {reviews: "review"}
+end
