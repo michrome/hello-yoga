@@ -1,0 +1,8 @@
+<% reviews.each do |_, review| %>
+    <blockquote>
+    “<%= review.body %>”
+    <cite>
+        <%= link_to review.author, review.url %>
+    </cite>
+    </blockquote>
+<% end %>
