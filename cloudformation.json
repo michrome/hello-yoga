@@ -1,0 +1,77 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Resources": {
+    "S3Bucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": "hello-yoga"
+      }
+    },
+    "dns": {
+      "Type": "AWS::Route53::HostedZone",
+      "Properties": {
+        "Name": "hello-yoga.co.uk"
+      }
+    },
+    "email": {
+      "Type": "AWS::Route53::RecordSetGroup",
+      "Properties": {
+        "Comment": "DNS records for iCloud Mail",
+        "HostedZoneId": {
+          "Ref": "dns"
+        },
+        "RecordSets": [
+          {
+            "Name": "hello-yoga.co.uk",
+            "ResourceRecords": [
+              "\"v=spf1 redirect=icloud.com\"",
+              "\"apple-domain=YJSfSmnGhO5EbjA5\""
+            ],
+            "TTL": 3600,
+            "Type": "TXT"
+          },
+          {
+            "Name": "hello-yoga.co.uk",
+            "ResourceRecords": [
+              "10 mx01.mail.icloud.com.",
+              "10 mx02.mail.icloud.com."
+            ],
+            "TTL": 3600,
+            "Type": "MX"
+          },
+          {
+            "Name": "sig1._domainkey.hello-yoga.co.uk",
+            "ResourceRecords": [
+              "sig1.dkim.hello-yoga.co.uk.at.icloudmailadmin.com."
+            ],
+            "TTL": 3600,
+            "Type": "CNAME"
+          }
+        ]
+      }
+    },
+    "web": {
+      "Type": "AWS::Route53::RecordSetGroup",
+      "Properties": {
+        "Comment": "DNS records for Netlify hosting",
+        "HostedZoneId": {
+          "Ref": "dns"
+        },
+        "RecordSets": [
+          {
+            "Name": "hello-yoga.co.uk",
+            "ResourceRecords": ["75.2.60.5"],
+            "TTL": 3600,
+            "Type": "A"
+          },
+          {
+            "Name": "www.hello-yoga.co.uk",
+            "ResourceRecords": ["hello-yoga.netlify.com"],
+            "TTL": 3600,
+            "Type": "CNAME"
+          }
+        ]
+      }
+    }
+  }
+}
