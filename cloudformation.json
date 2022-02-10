@@ -1,6 +1,43 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
   "Resources": {
+    "WebsiteCDN": {
+      "Type": "AWS::CloudFront::Distribution",
+      "Properties": {
+        "DistributionConfig": {
+          "Comment": "CloudFront for hello-yoga",
+          "DefaultCacheBehavior": {
+            "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+
+            "TargetOriginId": "hello-yoga-origin",
+
+            "ViewerProtocolPolicy": "allow-all"
+          },
+          "DefaultRootObject": "index.html",
+          "Enabled": true,
+          "HttpVersion": "http2",
+          "Origins": [
+            {
+              "CustomOriginConfig": {
+                "OriginProtocolPolicy": "https-only"
+              },
+              "DomainName": {
+                "Fn::Join": [
+                  "",
+                  [
+                    {
+                      "Ref": "S3Bucket"
+                    },
+                    ".s3-website-us-west-2.amazonaws.com"
+                  ]
+                ]
+              },
+              "Id": "hello-yoga-origin"
+            }
+          ]
+        }
+      }
+    },
     "S3Bucket": {
       "Type": "AWS::S3::Bucket",
       "Properties": {
