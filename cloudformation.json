@@ -8,9 +8,7 @@
           "Comment": "CloudFront for hello-yoga",
           "DefaultCacheBehavior": {
             "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
-
             "TargetOriginId": "hello-yoga-origin",
-
             "ViewerProtocolPolicy": "allow-all"
           },
           "DefaultRootObject": "index.html",
@@ -18,30 +16,39 @@
           "HttpVersion": "http2",
           "Origins": [
             {
-              "CustomOriginConfig": {
-                "OriginProtocolPolicy": "https-only"
-              },
-              "DomainName": {
-                "Fn::Join": [
-                  "",
-                  [
-                    {
-                      "Ref": "S3Bucket"
-                    },
-                    ".s3-website-us-west-2.amazonaws.com"
+              "DomainName": "hello-yoga.s3.eu-west-2.amazonaws.com",
+              "Id": "hello-yoga-origin",
+              "S3OriginConfig": {
+                "OriginAccessIdentity": {
+                  "Fn::Sub": [
+                    "origin-access-identity/cloudfront/${Id}",
+                    { "Id": { "Ref": "cloudfrontoriginaccessidentity" } }
                   ]
-                ]
-              },
-              "Id": "hello-yoga-origin"
+                }
+              }
             }
           ]
+        }
+      }
+    },
+    "cloudfrontoriginaccessidentity": {
+      "Type": "AWS::CloudFront::CloudFrontOriginAccessIdentity",
+      "Properties": {
+        "CloudFrontOriginAccessIdentityConfig": {
+          "Comment": "string-value"
         }
       }
     },
     "S3Bucket": {
       "Type": "AWS::S3::Bucket",
       "Properties": {
-        "BucketName": "hello-yoga"
+        "BucketName": "hello-yoga",
+        "PublicAccessBlockConfiguration": {
+          "BlockPublicAcls": true,
+          "BlockPublicPolicy": true,
+          "IgnorePublicAcls": true,
+          "RestrictPublicBuckets": true
+        }
       }
     },
     "dns": {
