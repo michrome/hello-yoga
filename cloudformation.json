@@ -35,7 +35,7 @@
       "Type": "AWS::CloudFront::CloudFrontOriginAccessIdentity",
       "Properties": {
         "CloudFrontOriginAccessIdentityConfig": {
-          "Comment": "string-value"
+          "Comment": "access-identity-hello-yoga"
         }
       }
     },
