@@ -168,7 +168,7 @@
           },
           {
             "Name": "ww2.hello-yoga.co.uk",
-            "ResourceRecords": ["hello-yoga.netlify.com"],
+            "ResourceRecords": [{ "Fn::GetAtt" : [ "WebsiteCDN", "DomainName" ] }],
             "TTL": 3600,
             "Type": "CNAME"
           }
