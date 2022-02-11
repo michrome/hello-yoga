@@ -1,6 +1,21 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
   "Resources": {
+    "Cert": {
+      "Type": "AWS::CertificateManager::Certificate",
+      "Properties": {
+        "DomainName": "ww2.hello-yoga.co.uk",
+        "DomainValidationOptions": [
+          {
+            "DomainName": "ww2.hello-yoga.co.uk",
+            "HostedZoneId": {
+              "Ref": "dns"
+            }
+          }
+        ],
+        "ValidationMethod": "DNS"
+      }
+    },
     "WebsiteCDN": {
       "Type": "AWS::CloudFront::Distribution",
       "Properties": {
@@ -147,6 +162,12 @@
           },
           {
             "Name": "www.hello-yoga.co.uk",
+            "ResourceRecords": ["hello-yoga.netlify.com"],
+            "TTL": 3600,
+            "Type": "CNAME"
+          },
+          {
+            "Name": "ww2.hello-yoga.co.uk",
             "ResourceRecords": ["hello-yoga.netlify.com"],
             "TTL": 3600,
             "Type": "CNAME"
