@@ -51,6 +51,43 @@
         }
       }
     },
+    "BucketPolicy": {
+      "Type": "AWS::S3::BucketPolicy",
+      "Properties": {
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Sub": [
+                    "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${Id}",
+                    { "Id": { "Ref": "cloudfrontoriginaccessidentity" } }
+                  ]
+                }
+              },
+              "Action": "s3:GetObject",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:aws:s3:::",
+                    {
+                      "Ref": "S3Bucket"
+                    },
+                    "/*"
+                  ]
+                ]
+              }
+            }
+          ]
+        },
+        "Bucket": {
+          "Ref": "S3Bucket"
+        }
+      }
+    },
     "dns": {
       "Type": "AWS::Route53::HostedZone",
       "Properties": {
