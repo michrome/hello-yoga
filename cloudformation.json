@@ -9,6 +9,75 @@
     }
   },
   "Resources": {
+    "HostedZone": {
+      "Type": "AWS::Route53::HostedZone",
+      "Properties": {
+        "HostedZoneConfig": { "Comment": "Stack managed" },
+        "Name": "hello-yoga.co.uk"
+      }
+    },
+    "EmailDnsRecords": {
+      "Type": "AWS::Route53::RecordSetGroup",
+      "Properties": {
+        "Comment": "DNS records for iCloud Mail",
+        "HostedZoneId": { "Ref": "HostedZone" },
+        "RecordSets": [
+          {
+            "Name": "hello-yoga.co.uk",
+            "ResourceRecords": [
+              "\"v=spf1 redirect=icloud.com\"",
+              "\"apple-domain=YJSfSmnGhO5EbjA5\""
+            ],
+            "TTL": 3600,
+            "Type": "TXT"
+          },
+          {
+            "Name": "hello-yoga.co.uk",
+            "ResourceRecords": [
+              "10 mx01.mail.icloud.com.",
+              "10 mx02.mail.icloud.com."
+            ],
+            "TTL": 3600,
+            "Type": "MX"
+          },
+          {
+            "Name": "sig1._domainkey.hello-yoga.co.uk",
+            "ResourceRecords": [
+              "sig1.dkim.hello-yoga.co.uk.at.icloudmailadmin.com."
+            ],
+            "TTL": 3600,
+            "Type": "CNAME"
+          }
+        ]
+      }
+    },
+    "WebDnsRecords": {
+      "Type": "AWS::Route53::RecordSetGroup",
+      "Properties": {
+        "Comment": "DNS records for Netlify hosting",
+        "HostedZoneId": { "Ref": "HostedZone" },
+        "RecordSets": [
+          {
+            "Name": "hello-yoga.co.uk",
+            "ResourceRecords": ["75.2.60.5"],
+            "TTL": 3600,
+            "Type": "A"
+          },
+          {
+            "Name": "www.hello-yoga.co.uk",
+            "ResourceRecords": ["hello-yoga.netlify.com"],
+            "TTL": 3600,
+            "Type": "CNAME"
+          },
+          {
+            "Name": "aws.hello-yoga.co.uk",
+            "ResourceRecords": [{ "Fn::GetAtt": ["WebsiteCDN", "DomainName"] }],
+            "TTL": 3600,
+            "Type": "CNAME"
+          }
+        ]
+      }
+    },
     "Cert": {
       "Type": "AWS::CertificateManager::Certificate",
       "Properties": {
@@ -107,75 +176,6 @@
           ]
         },
         "Bucket": { "Ref": "S3Bucket" }
-      }
-    },
-    "HostedZone": {
-      "Type": "AWS::Route53::HostedZone",
-      "Properties": {
-        "HostedZoneConfig": { "Comment": "Stack managed" },
-        "Name": "hello-yoga.co.uk"
-      }
-    },
-    "email": {
-      "Type": "AWS::Route53::RecordSetGroup",
-      "Properties": {
-        "Comment": "DNS records for iCloud Mail",
-        "HostedZoneId": { "Ref": "HostedZone" },
-        "RecordSets": [
-          {
-            "Name": "hello-yoga.co.uk",
-            "ResourceRecords": [
-              "\"v=spf1 redirect=icloud.com\"",
-              "\"apple-domain=YJSfSmnGhO5EbjA5\""
-            ],
-            "TTL": 3600,
-            "Type": "TXT"
-          },
-          {
-            "Name": "hello-yoga.co.uk",
-            "ResourceRecords": [
-              "10 mx01.mail.icloud.com.",
-              "10 mx02.mail.icloud.com."
-            ],
-            "TTL": 3600,
-            "Type": "MX"
-          },
-          {
-            "Name": "sig1._domainkey.hello-yoga.co.uk",
-            "ResourceRecords": [
-              "sig1.dkim.hello-yoga.co.uk.at.icloudmailadmin.com."
-            ],
-            "TTL": 3600,
-            "Type": "CNAME"
-          }
-        ]
-      }
-    },
-    "web": {
-      "Type": "AWS::Route53::RecordSetGroup",
-      "Properties": {
-        "Comment": "DNS records for Netlify hosting",
-        "HostedZoneId": { "Ref": "HostedZone" },
-        "RecordSets": [
-          {
-            "Name": "hello-yoga.co.uk",
-            "ResourceRecords": ["75.2.60.5"],
-            "TTL": 3600,
-            "Type": "A"
-          },
-          {
-            "Name": "www.hello-yoga.co.uk",
-            "ResourceRecords": ["hello-yoga.netlify.com"],
-            "TTL": 3600,
-            "Type": "CNAME"
-          },
-          {
-            "Name": "ww2.hello-yoga.co.uk",
-            "ResourceRecords": [{ "Fn::GetAtt": ["WebsiteCDN", "DomainName"] }],
-            "TTL": 3600,
-            "Type": "CNAME"
-          }
-        ]
       }
     }
   }
