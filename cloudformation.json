@@ -20,7 +20,7 @@
             ]
           }
         },
-        "Name": "hello-yoga.co.uk"
+        "Name": { "Ref": "MyDomainName" }
       }
     },
     "EmailDnsRecords": {
@@ -127,7 +127,9 @@
           "DefaultCacheBehavior": {
             "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
             "Compress": true,
-            "TargetOriginId": { "Fn::GetAtt" : [ "S3Bucket", "RegionalDomainName" ] },
+            "TargetOriginId": {
+              "Fn::GetAtt": ["S3Bucket", "RegionalDomainName"]
+            },
             "ViewerProtocolPolicy": "redirect-to-https"
           },
           "DefaultRootObject": "index.html",
@@ -136,17 +138,14 @@
           "Origins": [
             {
               "DomainName": {
-                "Fn::Sub": [
-                  "hello-yoga.s3.${Region}.amazonaws.com",
-                  { "Region": { "Ref": "AWS::Region" } }
-                ]
+                "Fn::GetAtt": ["S3Bucket", "RegionalDomainName"]
               },
-              "Id": { "Fn::GetAtt" : [ "S3Bucket", "RegionalDomainName" ] },
+              "Id": { "Fn::GetAtt": ["S3Bucket", "RegionalDomainName"] },
               "S3OriginConfig": {
                 "OriginAccessIdentity": {
                   "Fn::Sub": [
                     "origin-access-identity/cloudfront/${Id}",
-                    { "Id": { "Ref": "cloudfrontoriginaccessidentity" } }
+                    { "Id": { "Ref": "MyCloudFrontOriginAccessIdentity" } }
                   ]
                 }
               }
@@ -160,18 +159,23 @@
         }
       }
     },
-    "cloudfrontoriginaccessidentity": {
+    "MyCloudFrontOriginAccessIdentity": {
       "Type": "AWS::CloudFront::CloudFrontOriginAccessIdentity",
       "Properties": {
         "CloudFrontOriginAccessIdentityConfig": {
-          "Comment": "access-identity-hello-yoga"
+          "Comment": {
+            "Fn::Sub": [
+              "CloudFront Id to access ${Bucket}",
+              { "Bucket": { "Fn::GetAtt": ["S3Bucket", "RegionalDomainName"] } }
+            ]
+          }
         }
       }
     },
     "S3Bucket": {
       "Type": "AWS::S3::Bucket",
       "Properties": {
-        "BucketName": "hello-yoga",
+        "BucketName": { "Ref": "MyDomainName" },
         "PublicAccessBlockConfiguration": {
           "BlockPublicAcls": true,
           "BlockPublicPolicy": true,
@@ -192,7 +196,7 @@
                 "AWS": {
                   "Fn::Sub": [
                     "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${Id}",
-                    { "Id": { "Ref": "cloudfrontoriginaccessidentity" } }
+                    { "Id": { "Ref": "MyCloudFrontOriginAccessIdentity" } }
                   ]
                 }
               },
