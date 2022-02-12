@@ -127,7 +127,7 @@
           "DefaultCacheBehavior": {
             "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
             "Compress": true,
-            "TargetOriginId": { "Ref": "S3Bucket" },
+            "TargetOriginId": { "Fn::GetAtt" : [ "S3Bucket", "RegionalDomainName" ] },
             "ViewerProtocolPolicy": "redirect-to-https"
           },
           "DefaultRootObject": "index.html",
@@ -141,7 +141,7 @@
                   { "Region": { "Ref": "AWS::Region" } }
                 ]
               },
-              "Id": { "Ref": "S3Bucket" },
+              "Id": { "Fn::GetAtt" : [ "S3Bucket", "RegionalDomainName" ] },
               "S3OriginConfig": {
                 "OriginAccessIdentity": {
                   "Fn::Sub": [
