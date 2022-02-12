@@ -12,7 +12,14 @@
     "HostedZone": {
       "Type": "AWS::Route53::HostedZone",
       "Properties": {
-        "HostedZoneConfig": { "Comment": "Stack managed" },
+        "HostedZoneConfig": {
+          "Comment": {
+            "Fn::Sub": [
+              "Managed by ${StackName} stack",
+              { "StackName": { "Ref": "AWS::StackName" } }
+            ]
+          }
+        },
         "Name": "hello-yoga.co.uk"
       }
     },
