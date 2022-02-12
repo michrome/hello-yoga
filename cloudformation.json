@@ -2,7 +2,7 @@
   "AWSTemplateFormatVersion": "2010-09-09",
   "Description": "This stack will only work correctly in the US East (N. Virginia) Region (us-east-1) because CloudFront only supports ACM certificates in that region.",
   "Parameters": {
-    "H": {
+    "MyDomainName": {
       "Type": "String",
       "Default": "hello-yoga.co.uk",
       "Description": "The domain we're deploying"
@@ -81,10 +81,15 @@
     "Cert": {
       "Type": "AWS::CertificateManager::Certificate",
       "Properties": {
-        "DomainName": "ww2.hello-yoga.co.uk",
+        "DomainName": {
+          "Fn::Sub": [
+            "*.${Domainame}",
+            { "DomainName": { "Ref": "MyDomainName" } }
+          ]
+        },
         "DomainValidationOptions": [
           {
-            "DomainName": "ww2.hello-yoga.co.uk",
+            "DomainName": { "Ref": "MyDomainName" },
             "HostedZoneId": { "Ref": "HostedZone" }
           }
         ],
