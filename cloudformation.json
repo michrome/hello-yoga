@@ -107,8 +107,23 @@
       "Type": "AWS::CloudFront::Distribution",
       "Properties": {
         "DistributionConfig": {
-          "Aliases": ["ww2.hello-yoga.co.uk"],
-          "Comment": "CloudFront for hello-yoga",
+          "Aliases": [
+            {
+              "Fn::Sub": [
+                "*.${RootDomainName}",
+                { "RootDomainName": { "Ref": "MyDomainName" } }
+              ]
+            }
+          ],
+          "Comment": {
+            "Fn::Sub": [
+              "CloudFront for ${RootDomainName}. Managed by ${StackName} stack",
+              {
+                "RootDomainName": { "Ref": "MyDomainName" },
+                "StackName": { "Ref": "AWS::StackName" }
+              }
+            ]
+          },
           "DefaultCacheBehavior": {
             "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
             "TargetOriginId": "hello-yoga-origin",
