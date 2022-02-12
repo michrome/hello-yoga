@@ -8,9 +8,7 @@
         "DomainValidationOptions": [
           {
             "DomainName": "ww2.hello-yoga.co.uk",
-            "HostedZoneId": {
-              "Ref": "dns"
-            }
+            "HostedZoneId": { "Ref": "dns" }
           }
         ],
         "ValidationMethod": "DNS"
@@ -20,6 +18,7 @@
       "Type": "AWS::CloudFront::Distribution",
       "Properties": {
         "DistributionConfig": {
+          "Aliases": ["ww2.hello-yoga.co.uk"],
           "Comment": "CloudFront for hello-yoga",
           "DefaultCacheBehavior": {
             "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
@@ -42,7 +41,12 @@
                 }
               }
             }
-          ]
+          ],
+          "ViewerCertificate": {
+            "AcmCertificateArn": { "Ref": "Cert" },
+            "MinimumProtocolVersion": "TLSv1",
+            "SslSupportMethod": "sni-only"
+          }
         }
       }
     },
@@ -84,16 +88,7 @@
               },
               "Action": "s3:GetObject",
               "Resource": {
-                "Fn::Join": [
-                  "",
-                  [
-                    "arn:aws:s3:::",
-                    {
-                      "Ref": "S3Bucket"
-                    },
-                    "/*"
-                  ]
-                ]
+                "Fn::Join": ["", ["arn:aws:s3:::", { "Ref": "S3Bucket" }, "/*"]]
               }
             }
           ]
@@ -168,7 +163,7 @@
           },
           {
             "Name": "ww2.hello-yoga.co.uk",
-            "ResourceRecords": [{ "Fn::GetAtt" : [ "WebsiteCDN", "DomainName" ] }],
+            "ResourceRecords": [{ "Fn::GetAtt": ["WebsiteCDN", "DomainName"] }],
             "TTL": 3600,
             "Type": "CNAME"
           }
