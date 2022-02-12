@@ -83,8 +83,8 @@
       "Properties": {
         "DomainName": {
           "Fn::Sub": [
-            "*.${Domainame}",
-            { "DomainName": { "Ref": "MyDomainName" } }
+            "*.${RootDomainName}",
+            { "RootDomainName": { "Ref": "MyDomainName" } }
           ]
         },
         "DomainValidationOptions": [
