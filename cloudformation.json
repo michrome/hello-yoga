@@ -1,5 +1,13 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "This stack will only work correctly in the US East (N. Virginia) Region (us-east-1) because CloudFront only supports ACM certificates in that region.",
+  "Parameters": {
+    "H": {
+      "Type": "String",
+      "Default": "hello-yoga.co.uk",
+      "Description": "The domain we're deploying"
+    }
+  },
   "Resources": {
     "Cert": {
       "Type": "AWS::CertificateManager::Certificate",
@@ -8,7 +16,7 @@
         "DomainValidationOptions": [
           {
             "DomainName": "ww2.hello-yoga.co.uk",
-            "HostedZoneId": { "Ref": "dns" }
+            "HostedZoneId": { "Ref": "HostedZone" }
           }
         ],
         "ValidationMethod": "DNS"
@@ -30,7 +38,12 @@
           "HttpVersion": "http2",
           "Origins": [
             {
-              "DomainName": "hello-yoga.s3.eu-west-2.amazonaws.com",
+              "DomainName": {
+                "Fn::Sub": [
+                  "hello-yoga.s3.${Region}.amazonaws.com",
+                  { "Region": { "Ref": "AWS::Region" } }
+                ]
+              },
               "Id": "hello-yoga-origin",
               "S3OriginConfig": {
                 "OriginAccessIdentity": {
@@ -96,7 +109,7 @@
         "Bucket": { "Ref": "S3Bucket" }
       }
     },
-    "dns": {
+    "HostedZone": {
       "Type": "AWS::Route53::HostedZone",
       "Properties": {
         "HostedZoneConfig": { "Comment": "Stack managed" },
@@ -107,7 +120,7 @@
       "Type": "AWS::Route53::RecordSetGroup",
       "Properties": {
         "Comment": "DNS records for iCloud Mail",
-        "HostedZoneId": { "Ref": "dns" },
+        "HostedZoneId": { "Ref": "HostedZone" },
         "RecordSets": [
           {
             "Name": "hello-yoga.co.uk",
@@ -142,7 +155,7 @@
       "Type": "AWS::Route53::RecordSetGroup",
       "Properties": {
         "Comment": "DNS records for Netlify hosting",
-        "HostedZoneId": { "Ref": "dns" },
+        "HostedZoneId": { "Ref": "HostedZone" },
         "RecordSets": [
           {
             "Name": "hello-yoga.co.uk",
