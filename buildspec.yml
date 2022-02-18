@@ -3,7 +3,7 @@ version: 0.2
 phases:
   build:
     commands:
-      - echo hello && echo `pwd` && echo `date`&& date > ./my-date.txt && echo `ls`
+      - echo hello && echo `pwd` && echo `date`&& date > ./index.html && echo `ls`
 artifacts:
   files:
-    - "my-date.txt"
+    - "index.html"
