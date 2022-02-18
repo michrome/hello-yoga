@@ -125,7 +125,7 @@
             ]
           },
           "DefaultCacheBehavior": {
-            "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+            "CachePolicyId": "4135ea2d-6df8-44a3-9df3-4b5a84be39ad",
             "Compress": true,
             "TargetOriginId": {
               "Fn::GetAtt": ["S3Bucket", "RegionalDomainName"]
@@ -141,6 +141,7 @@
                 "Fn::GetAtt": ["S3Bucket", "RegionalDomainName"]
               },
               "Id": { "Fn::GetAtt": ["S3Bucket", "RegionalDomainName"] },
+              "OriginPath": "/www",
               "S3OriginConfig": {
                 "OriginAccessIdentity": {
                   "Fn::Sub": [
@@ -202,12 +203,148 @@
               },
               "Action": "s3:GetObject",
               "Resource": {
-                "Fn::Join": ["", ["arn:aws:s3:::", { "Ref": "S3Bucket" }, "/*"]]
+                "Fn::Join": [
+                  "",
+                  ["arn:aws:s3:::", { "Ref": "S3Bucket" }, "/www/*"]
+                ]
               }
             }
           ]
         },
         "Bucket": { "Ref": "S3Bucket" }
+      }
+    },
+    "CodeBuildProject": {
+      "Type": "AWS::CodeBuild::Project",
+      "Properties": {
+        "Artifacts": {
+          "EncryptionDisabled": true,
+          "Location": { "Ref": "S3Bucket" },
+          "Name": "/",
+          "Path": "www",
+          "Type": "S3"
+        },
+        "ConcurrentBuildLimit": 1,
+        "Description": {
+          "Fn::Sub": [
+            "CodeBuild Project for ${RootDomainName}. Managed by ${StackName} stack.",
+            {
+              "RootDomainName": { "Ref": "MyDomainName" },
+              "StackName": { "Ref": "AWS::StackName" }
+            }
+          ]
+        },
+        "Environment": {
+          "ComputeType": "BUILD_GENERAL1_SMALL",
+          "Image": "aws/codebuild/standard:5.0",
+          "Type": "LINUX_CONTAINER"
+        },
+        "LogsConfig": {
+          "S3Logs": {
+            "EncryptionDisabled": true,
+            "Location": {
+              "Fn::Sub": [
+                "${BucketArn}/build-log",
+                {
+                  "BucketArn": { "Fn::GetAtt": ["S3Bucket", "Arn"] }
+                }
+              ]
+            },
+            "Status": "ENABLED"
+          }
+        },
+        "Name": "HelloYogaBuildProject",
+        "ServiceRole": { "Fn::GetAtt": ["CodeBuildServiceRole", "Arn"] },
+        "Source": {
+          "Location": "https://github.com/michrome/hello-yoga.git",
+          "Type": "GITHUB"
+        }
+      }
+    },
+    "CodeBuildServiceRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": ["codebuild.amazonaws.com"]
+              },
+              "Action": ["sts:AssumeRole"]
+            }
+          ]
+        },
+        "Description": "CodeBuild Service Role for Hello Yoga"
+      }
+    },
+    "CodeBuildBasePolicy": {
+      "Type": "AWS::IAM::ManagedPolicy",
+      "Properties": {
+        "Description": {
+          "Fn::Sub": [
+            "Policy used in trust relationship with CodeBuild",
+            {
+              "BucketName": { "Ref": "S3Bucket" }
+            }
+          ]
+        },
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::Sub": [
+                    "arn:aws:logs:${Region}:${AccountId}:log-group:/aws/codebuild/${CodeBuildProjectName}",
+                    {
+                      "Region": { "Ref": "AWS::Region" },
+                      "AccountId": { "Ref": "AWS::AccountId" },
+                      "CodeBuildProjectName": { "Ref": "CodeBuildProject" }
+                    }
+                  ]
+                },
+                {
+                  "Fn::Sub": [
+                    "arn:aws:logs:${Region}:${AccountId}:log-group:/aws/codebuild/${CodeBuildProjectName}:*",
+                    {
+                      "Region": { "Ref": "AWS::Region" },
+                      "AccountId": { "Ref": "AWS::AccountId" },
+                      "CodeBuildProjectName": { "Ref": "CodeBuildProject" }
+                    }
+                  ]
+                }
+              ],
+              "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+              ]
+            },
+            {
+              "Effect": "Allow",
+              "Resource": [
+                { "Fn::GetAtt": ["S3Bucket", "Arn"] },
+                {
+                  "Fn::Sub": [
+                    "${BucketArn}/*",
+                    {
+                      "BucketArn": { "Fn::GetAtt": ["S3Bucket", "Arn"] }
+                    }
+                  ]
+                }
+              ],
+              "Action": [
+                "s3:PutObject",
+                "s3:GetBucketAcl",
+                "s3:GetBucketLocation"
+              ]
+            }
+          ]
+        },
+        "Roles": [{ "Ref": "CodeBuildServiceRole" }]
       }
     }
   }
