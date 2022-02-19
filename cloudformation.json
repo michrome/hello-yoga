@@ -256,10 +256,10 @@
         "Name": "HelloYogaBuildProject",
         "ServiceRole": { "Fn::GetAtt": ["CodeBuildServiceRole", "Arn"] },
         "Source": {
-          "Location": "https://github.com/michrome/hello-yoga",
+          "Location": "https://github.com/michrome/hello-world",
           "Type": "GITHUB"
         },
-        "SourceVersion": "new"
+        "SourceVersion": "main"
       }
     },
     "CodeBuildServiceRole": {
