@@ -115,6 +115,19 @@
               ]
             }
           ],
+          "CacheBehaviors": [
+            {
+              "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+              "PathPattern": "images/*",
+              "ResponseHeadersPolicyId": {
+                "Ref": "ImagesResponseHeadersPolicy"
+              },
+              "TargetOriginId": {
+                "Fn::GetAtt": ["S3Bucket", "RegionalDomainName"]
+              },
+              "ViewerProtocolPolicy": "redirect-to-https"
+            }
+          ],
           "Comment": {
             "Fn::Sub": [
               "CloudFront for ${RootDomainName}. Managed by ${StackName} stack.",
@@ -170,6 +183,23 @@
               { "Bucket": { "Fn::GetAtt": ["S3Bucket", "RegionalDomainName"] } }
             ]
           }
+        }
+      }
+    },
+    "ImagesResponseHeadersPolicy": {
+      "Type": "AWS::CloudFront::ResponseHeadersPolicy",
+      "Properties": {
+        "ResponseHeadersPolicyConfig": {
+          "CustomHeadersConfig": {
+            "Items": [
+              {
+                "Header": "Cache-Control",
+                "Override": true,
+                "Value": "max-age=31536000"
+              }
+            ]
+          },
+          "Name": "HelloYogaImagesResponseHeadersPolicy"
         }
       }
     },
