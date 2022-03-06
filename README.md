@@ -11,3 +11,7 @@ Also the bucket URL is hard-coded to us-east-1.
 
 
 --capabilities CAPABILITY_IAM is needed if making IAM changes
+
+```
+% aws cloudformation update-stack --stack-name hello-yoga --template-body file://cloudformation.json --tags 'Key=project,Value=hello-yoga' --region=us-east-1 --capabilities CAPABILITY_IAM
+```
