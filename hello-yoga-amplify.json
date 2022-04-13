@@ -1,0 +1,20 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Deploying App to Amplify via Cloudformation",
+  "Resources": {
+    "AmplifyApp": {
+      "Type": "AWS::Amplify::App",
+      "Properties": {
+        "Name": "hello YOGA",
+        "Repository": "https://github.com/michrome/hello-yoga"
+      }
+    },
+    "Branch": {
+      "Type": "AWS::Amplify::Branch",
+      "Properties": {
+        "AppId": { "Fn::GetAtt": ["AmplifyApp", "AppId"] },
+        "BranchName": "next"
+      }
+    }
+  }
+}
