@@ -1,0 +1,7 @@
+{
+  "@type": "Review",
+  "reviewBody": "Replace with body",
+  "author": { "@type": "Person", "name": "Replace with name" },
+  "datePublished": "Replace with date",
+  "reviewRating": { "@type": "Rating", "ratingValue": 5 }
+}

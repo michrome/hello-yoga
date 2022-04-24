@@ -1,0 +1,40 @@
+{
+  "@id": "https://www.hello-yoga.co.uk/",
+  "@context": "http://schema.org",
+  "@type": "LocalBusiness",
+  "name": "hello YOGA",
+  "description": "Small, friendly yoga classes. Suitable for all abilities. Strengthen body, increase flexibility and calm the mind.",
+  "email": "clare@hello-yoga.co.uk",
+  "url": "https://www.hello-yoga.co.uk/",
+  "image": "https://www.hello-yoga.co.uk/images/yoga-people.png",
+  "logo": "https://www.hello-yoga.co.uk/images/hello-yoga.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Harrogate",
+    "addressRegion": "North Yorkshire",
+    "addressCountry": "GB"
+  },
+  "telephone": "07581 334542",
+  "currenciesAccepted": "GBP",
+  "priceRange": "£",
+  "paymentAccepted": "Cash",
+  "openingHours": ["Th 19:00-20:00"],
+  "sameAs": [
+    "https://facebook.com/helloyogaharrogate",
+    "https://harrogate.mumbler.co.uk/hello-yoga/"
+  ],
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "+44-7581334542",
+      "contactType": "reservations",
+      "areaServed": "GB",
+      "availableLanguage": "English"
+    }
+  ],
+  "review": [],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5"
+  }
+}

@@ -1,0 +1,17 @@
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: floralwhite;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  text-align: center;
+}
+
+span.line {
+  display: inline-block;
+}
+
+#yoga-people {
+  max-width: 90%;
+}

@@ -1,0 +1,15 @@
+{
+  "@id": "https://www.hello-yoga.co.uk/#beckwith-health-club",
+  "@context": "http://schema.org",
+  "@type": "Place",
+  "name": "Beckwith Health Club",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Beckwith Health Club",
+    "addressLocality": "Harrogate",
+    "addressRegion": "North Yorkshire",
+    "postalCode": "HG3 1UF",
+    "addressCountry": "GB"
+  },
+  "url": "https://beckwithhealthclub.co.uk/"
+}

@@ -3,7 +3,6 @@
 .DS_Store
 .sass-cache
 build/
-data/
 .*\-hash
 .env
 .DS_Store

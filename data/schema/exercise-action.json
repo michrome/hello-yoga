@@ -1,0 +1,8 @@
+{
+  "@id": "https://www.hello-yoga.co.uk/#yoga-action",
+  "@context": "http://schema.org",
+  "@type": "ExerciseAction",
+  "exerciseType": "Yoga",
+  "name": "hello YOGA",
+  "description": "Small, friendly yoga class. Suitable for all abilities."
+}

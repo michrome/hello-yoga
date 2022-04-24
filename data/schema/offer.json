@@ -1,0 +1,10 @@
+{
+  "@id": "https://www.hello-yoga.co.uk/#offer",
+  "@context": "http://schema.org",
+  "@type": "Offer",
+  "availability": "http://schema.org/LimitedAvailability",
+  "price": "8.00",
+  "priceCurrency": "GBP",
+  "validFrom": "2018-05-01T12:00",
+  "url": "https://www.hello-yoga.co.uk/"
+}
