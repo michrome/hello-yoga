@@ -11,8 +11,6 @@ import { zonedTimeToUtc } from "date-fns-tz";
 import Review from "../components/review";
 import Schema from "../components/schema";
 import reviewData from "../data/reviews";
-import helloYoga from "../public/images/hello-yoga.png";
-import yogaPeople from "../public/images/yoga-people.png";
 
 function HomePage({ reviews, eventDates }) {
   return (
@@ -53,7 +51,7 @@ function HomePage({ reviews, eventDates }) {
         />
       </Head>
       <p>
-        <Image src={helloYoga} alt="hello YOGA" />
+        <img src="images/hello-yoga.png" alt="hello YOGA" />
       </p>
       <h2>Thursdays 19:00–20:00</h2>
       <p id="beckwith-health-club">
@@ -89,13 +87,13 @@ function HomePage({ reviews, eventDates }) {
       ))}
 
       <p>
-        <Image src={yogaPeople} id="yoga-people" />
+        <img src="images/yoga-people.png" id="yoga-people" />
       </p>
     </>
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const { reviews } = reviewData;
   const firstEventDate = nextThursday(Date.now());
   const secondEventDate = nextThursday(firstEventDate);
