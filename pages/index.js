@@ -93,7 +93,7 @@ function HomePage({ reviews, eventDates }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const { reviews } = reviewData;
   const firstEventDate = nextThursday(Date.now());
   const secondEventDate = nextThursday(firstEventDate);
