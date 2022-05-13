@@ -72,7 +72,7 @@
       "Type": "AWS::Amplify::Branch",
       "Properties": {
         "AppId": { "Fn::GetAtt": ["AmplifyApp", "AppId"] },
-        "BranchName": "next"
+        "BranchName": "master"
       }
     },
     "AmplifyDomain": {
@@ -82,8 +82,8 @@
         "DomainName": "hello-yoga.co.uk",
         "SubDomainSettings": [
           {
-            "BranchName": "next",
-            "Prefix": "next"
+            "BranchName": "master",
+            "Prefix": "www"
           }
         ]
       }

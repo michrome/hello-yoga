@@ -11,7 +11,7 @@
 ```sh
 aws cloudformation create-stack \
 --stack-name 'hello-yoga-amplify' \
---template-body 'file://hello-yoga-amplify.json' \
+--template-body 'file://cloudformation-template.json' \
 --tags 'Key=project,Value=hello-yoga-amplify' \
 --region 'eu-west-2' \
 --capabilities CAPABILITY_IAM \
