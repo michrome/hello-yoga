@@ -11,8 +11,10 @@ import { zonedTimeToUtc } from "date-fns-tz";
 import Review from "../components/review";
 import Schema from "../components/schema";
 import reviewData from "../data/reviews";
+import helloYoga from "../public/images/hello-yoga.png";
+import yogaPeople from "../public/images/yoga-people.png";
 
-function HomePage({ reviews, eventDates, now }) {
+function HomePage({ reviews, eventDates }) {
   return (
     <>
       <Schema reviews={reviews} eventDates={eventDates} />
@@ -51,7 +53,7 @@ function HomePage({ reviews, eventDates, now }) {
         />
       </Head>
       <p>
-        <img src="images/hello-yoga.png" alt="hello YOGA" />
+        <Image src={helloYoga} alt="hello YOGA" />
       </p>
       <h2>Thursdays 19:00–20:00</h2>
       <p id="beckwith-health-club">
@@ -85,11 +87,9 @@ function HomePage({ reviews, eventDates, now }) {
       {reviews.map((review, index) => (
         <Review review={review} key={index} />
       ))}
-
       <p>
-        <img src="images/yoga-people.png" id="yoga-people" />
+        <Image src={yogaPeople} id="yoga-people" />
       </p>
-      {now}
     </>
   );
 }
@@ -113,7 +113,6 @@ export async function getServerSideProps() {
     props: {
       reviews: reviews,
       eventDates: eventDates,
-      now: Date.now(),
     },
   };
 }
