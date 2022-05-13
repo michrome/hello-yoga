@@ -12,7 +12,7 @@ import Review from "../components/review";
 import Schema from "../components/schema";
 import reviewData from "../data/reviews";
 
-function HomePage({ reviews, eventDates }) {
+function HomePage({ reviews, eventDates, now }) {
   return (
     <>
       <Schema reviews={reviews} eventDates={eventDates} />
@@ -89,6 +89,7 @@ function HomePage({ reviews, eventDates }) {
       <p>
         <img src="images/yoga-people.png" id="yoga-people" />
       </p>
+      {now}
     </>
   );
 }
@@ -112,6 +113,7 @@ export async function getServerSideProps() {
     props: {
       reviews: reviews,
       eventDates: eventDates,
+      now: Date.now(),
     },
   };
 }
