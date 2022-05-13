@@ -72,7 +72,8 @@
       "Type": "AWS::Amplify::Branch",
       "Properties": {
         "AppId": { "Fn::GetAtt": ["AmplifyApp", "AppId"] },
-        "BranchName": "main"
+        "BranchName": "main",
+        "Stage": "PRODUCTION"
       }
     },
     "AmplifyDomain": {
