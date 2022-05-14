@@ -61,6 +61,11 @@
       "Type": "AWS::Amplify::App",
       "Properties": {
         "AccessToken": { "Ref": "GitHubPersonalAccessToken" },
+        "AutoBranchCreationConfig": {
+          "EnableAutoBranchCreation": true,
+          "Stage": "DEVELOPMENT"
+        },
+        "EnableBranchAutoDeletion": true,
         "IAMServiceRole": {
           "Fn::GetAtt": ["AmplifyConsoleServiceRole", "Arn"]
         },
