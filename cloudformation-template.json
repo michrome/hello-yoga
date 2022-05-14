@@ -86,6 +86,7 @@
       "Properties": {
         "AppId": { "Fn::GetAtt": ["AmplifyApp", "AppId"] },
         "DomainName": "hello-yoga.co.uk",
+        "EnableAutoSubDomain": true,
         "SubDomainSettings": [
           {
             "BranchName": "main",
