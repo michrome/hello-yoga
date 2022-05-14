@@ -63,6 +63,7 @@
         "AccessToken": { "Ref": "GitHubPersonalAccessToken" },
         "AutoBranchCreationConfig": {
           "EnableAutoBranchCreation": true,
+          "EnableAutoBuild": true,
           "Stage": "DEVELOPMENT"
         },
         "EnableBranchAutoDeletion": true,
