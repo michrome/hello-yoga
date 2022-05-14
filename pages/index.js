@@ -52,6 +52,7 @@ function HomePage({ reviews, eventDates }) {
           content="https://www.hello-yoga.co.uk/images/favicon-150.png"
         />
       </Head>
+      <p>Rebrand</p>
       <p>
         <Image src={helloYoga} alt="hello YOGA" />
       </p>
